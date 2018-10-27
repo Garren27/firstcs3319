@@ -1,0 +1,262 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+LOAD DATA LOCAL INFILE '/home/centos/assignment2/loaddatafall2018.txt'
+INTO TABLE product FIELDS TERMINATED BY ',' (productID, description, cost, quantity)
+--------------
+
+--------------
+SELECT * FROM product
+--------------
+
+productID	description	cost	quantity
+11	Bike	150	200
+12	Socks	2	100
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+INSERT INTO product (productID, description, cost, quantity) VALUES (66, "Elbow pads", 14.25, 120)
+--------------
+
+--------------
+INSERT INTO product (productID, description, cost, quantity) VALUES (55, "Clocks", 22.50, 100)
+--------------
+
+--------------
+INSERT INTO agent (agentID, firstName, lastName, city, commission) VALUES (99, "Hugh", "Grant", "Springfield", 16)
+--------------
+
+--------------
+INSERT INTO agent (agentID, firstName, lastName, city, commission) VALUES (22, "Courtney", "Cox", "New York", 25)
+--------------
+
+--------------
+INSERT INTO agent (agentID, firstName, lastName, city, commission) VALUES (66, "Rosie", "ODonnell", "Ottawa", 100)
+--------------
+
+--------------
+INSERT INTO agent (agentID, firstName, lastName, city, commission) VALUES (33, "David", "Letterman", "Bedrock", 100)
+--------------
+
+--------------
+INSERT INTO agent (agentID, firstName, lastName, city, commission) VALUES (11, "Regis", "Philbin", "Boston", 33)
+--------------
+
+--------------
+INSERT INTO agent (agentID, firstName, lastName, city, commission) VALUES (12, "Rosie", "Cox", "Ottawa", 50)
+--------------
+
+--------------
+INSERT INTO agent (agentID, firstName, lastName, city, commission) VALUES (27, "Garren", "McCallum", "Dutton", 100)
+--------------
+
+--------------
+INSERT INTO customer (customerID, firstName, lastName, city, phoneNum) VALUES (21, "Homer", "Simpson", "Springfield", "686-8956")
+--------------
+
+--------------
+INSERT INTO customer (customerID, firstName, lastName, city, phoneNum) VALUES (31, "Sideshow", "Bob", "Springfield", "686-5555")
+--------------
+
+--------------
+INSERT INTO customer (customerID, firstName, lastName, city, phoneNum) VALUES (12, "Monty", "Burns", "Springfield", "789-0000")
+--------------
+
+--------------
+INSERT INTO customer (customerID, firstName, lastName, city, phoneNum) VALUES (15, "Fred", "Flintstone", "Bedrock", "777-2345")
+--------------
+
+--------------
+INSERT INTO customer (customerID, firstName, lastName, city, phoneNum) VALUES (13, "Super", "Man", "Kypto", "888-1234")
+--------------
+
+--------------
+INSERT INTO customer (customerID, firstName, lastName, city, phoneNum) VALUES (10, "Barney", "Rubble", "Bedrock", "777-1234")
+--------------
+
+--------------
+INSERT INTO customer (customerID, firstName, lastName, city, phoneNum) VALUES (14, "Peter", "Griffens", "Providence", "987-4567")
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (21, 99, 20)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (21, 12, 14)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (21, 66, 10)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (31, 99, 1)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (31, 12, 2)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (31, 78, 4)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (31, 66, 2)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (15, 66, 2)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (15, 78, 2)
+--------------
+
+--------------
+INSERT INTO purchase (customerID, productID, quantity) VALUES (14, 66, 19)
+--------------
+
+--------------
+UPDATE customer SET agentID = 99 WHERE customerID = 21
+--------------
+
+--------------
+UPDATE customer SET agentID = 99 WHERE customerID = 12
+--------------
+
+--------------
+UPDATE customer SET agentID = 99 WHERE customerID = 14
+--------------
+
+--------------
+UPDATE customer SET agentID = 33 WHERE customerID = 13
+--------------
+
+--------------
+UPDATE customer SET agentID = 11 WHERE customerID = 10
+--------------
+
+--------------
+UPDATE customer SET agentID = 11 WHERE customerID = 15
+--------------
+
+--------------
+UPDATE customer SET agentID = 66 WHERE customerID = 31
+--------------
+
+--------------
+SELECT * FROM product
+--------------
+
+productID	description	cost	quantity
+11	Bike	150	200
+12	Socks	2	100
+55	Clocks	22.5	100
+66	Elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+SELECT * FROM agent
+--------------
+
+agentID	firstName	lastName	city	commission
+11	Regis	Philbin	Boston	33
+12	Rosie	Cox	Ottawa	50
+22	Courtney	Cox	New York	25
+27	Garren	McCallum	Dutton	100
+33	David	Letterman	Bedrock	100
+66	Rosie	ODonnell	Ottawa	100
+99	Hugh	Grant	Springfield	16
+--------------
+SELECT * FROM customer
+--------------
+
+customerID	firstName	lastName	city	phoneNum	agentID
+10	Barney	Rubble	Bedrock	777-1234	11
+12	Monty	Burns	Springfield	789-0000	99
+13	Super	Man	Kypto	888-1234	33
+14	Peter	Griffens	Providence	987-4567	99
+15	Fred	Flintstone	Bedrock	777-2345	11
+21	Homer	Simpson	Springfield	686-8956	99
+31	Sideshow	Bob	Springfield	686-5555	66
+--------------
+SELECT * FROM purchase
+--------------
+
+customerID	productID	quantity
+14	66	19
+15	66	2
+15	78	2
+21	12	14
+21	66	10
+21	99	20
+31	12	2
+31	66	2
+31	78	4
+31	99	1
+--------------
+UPDATE customer SET firstName = "Wonder", lastName = "Woman" WHERE firstName = "Super" AND lastName = "Man"
+--------------
+
+--------------
+UPDATE purchase SET quantity = 5 WHERE customerID = (SELECT customerID FROM customer WHERE firstName = "Sideshow")
+--------------
+
+--------------
+UPDATE customer SET city = "Boston" WHERE agentID = (SELECT agentID FROM agent WHERE firstName = "Regis")
+--------------
+
+--------------
+SELECT * FROM product
+--------------
+
+productID	description	cost	quantity
+11	Bike	150	200
+12	Socks	2	100
+55	Clocks	22.5	100
+66	Elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+SELECT * FROM agent
+--------------
+
+agentID	firstName	lastName	city	commission
+11	Regis	Philbin	Boston	33
+12	Rosie	Cox	Ottawa	50
+22	Courtney	Cox	New York	25
+27	Garren	McCallum	Dutton	100
+33	David	Letterman	Bedrock	100
+66	Rosie	ODonnell	Ottawa	100
+99	Hugh	Grant	Springfield	16
+--------------
+SELECT * FROM purchase
+--------------
+
+customerID	productID	quantity
+14	66	19
+15	66	2
+15	78	2
+21	12	14
+21	66	10
+21	99	20
+31	12	5
+31	66	5
+31	78	5
+31	99	5
+--------------
+SELECT * FROM customer
+--------------
+
+customerID	firstName	lastName	city	phoneNum	agentID
+10	Barney	Rubble	Boston	777-1234	11
+12	Monty	Burns	Springfield	789-0000	99
+13	Wonder	Woman	Kypto	888-1234	33
+14	Peter	Griffens	Providence	987-4567	99
+15	Fred	Flintstone	Boston	777-2345	11
+21	Homer	Simpson	Springfield	686-8956	99
+31	Sideshow	Bob	Springfield	686-5555	66

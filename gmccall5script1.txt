@@ -1,0 +1,17 @@
+SHOW DATABASES;
+DROP DATABASE IF EXISTS gmccall5assign2db;
+CREATE DATABASE gmccall5assign2db;
+USE gmccall5assign2db;
+GRANT USAGE ON *.* TO 'ta'@'localhost';
+DROP USER 'ta'@'localhost';
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319';
+GRANT ALL PRIVILEGES ON gmccall5assign2db.* TO 'ta'@'localhost';
+FLUSH PRIVILEGES;
+SHOW TABLES;
+CREATE TABLE product (productID VARCHAR(2) NOT NULL, description VARCHAR(20), cost FLOAT, quantity INT, PRIMARY KEY (productID)); 
+CREATE TABLE agent (agentID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), commission FLOAT, PRIMARY KEY (agentID));
+
+CREATE TABLE customer (customerID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), phoneNum VARCHAR(8), agentID VARCHAR(2), PRIMARY KEY (customerID), FOREIGN KEY (agentID) REFERENCES agent(agentID));
+CREATE TABLE purchase (customerID VARCHAR(2) NOT NULL, productID VARCHAR(2) NOT NULL, quantity INT, PRIMARY KEY (customerID, productID), FOREIGN KEY (customerID) REFERENCES customer(customerID), FOREIGN KEY (productID) REFERENCES  product(productID));
+
+SHOW TABLES;
