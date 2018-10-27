@@ -1,0 +1,45 @@
+USE gmccall5assign2db;
+-- Query 1
+SELECT description FROM product;
+
+-- Query 2
+SELECT DISTINCT city FROM customer;
+
+-- Query 3
+SELECT * FROM agent ORDER BY city;
+
+-- Query 4
+SELECT firstName, lastName FROM customer WHERE city = "Springfield";
+
+-- Query 5 
+SELECT lastName FROM customer WHERE agentID = (SELECT agentID FROM agent WHERE firstName = "Regis");
+
+-- Query 6
+SELECT description FROM product WHERE description LIKE "%pad%" OR "%Pad%";
+
+-- Query 7
+SELECT lastName, description, purchase.quantity FROM customer, product, purchase WHERE purchase.customerID = customer.customerID and product.productID = purchase.productID;
+
+-- Query 8
+SELECT SUM(quantity) AS "Homer's Total Purchases" FROM purchase, customer WHERE purchase.customerID = customer.customerID and customer.firstName = "Homer";
+
+-- Query 9
+SELECT firstName, lastName, SUM(quantity) FROM customer, purchase WHERE customer.customerID = purchase.customerID GROUP BY purchase.customerID;
+
+-- Query 10
+SELECT description, quantity FROM product WHERE product.productID NOT IN (SELECT productID from purchase);
+
+-- Query 11
+SELECT description, quantity FROM product WHERE productID NOT IN (SELECT productID FROM purchase WHERE customerID IN (SELECT customerID FROM customer WHERE firstName = "Fred" AND lastName = "Flintstone"));
+
+-- Query 12
+SELECT customer.firstName, customer.lastName, agent.firstName, agent.lastName FROM customer, agent WHERE customer.agentID = agent.agentID and customer.city = agent.city;
+
+-- Query 13
+SELECT SUM(quantity) AS "Quanity of Knee Pads Sold" FROM purchase WHERE purchase.productID = 78;
+
+-- Query 14
+SELECT description FROM product WHERE productID IN (SELECT productID FROM purchase GROUP BY productID HAVING COUNT(customerID) > 2);
+
+-- Query 15
+SELECT firstName, lastName FROM agent WHERE agent.agentID IN (SELECT customer.agentID FROM customer WHERE customer.customerID IN (SELECT purchase.customerID FROM purchase WHERE purchase.productID = 78));
