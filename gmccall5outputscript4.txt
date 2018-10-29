@@ -1,0 +1,49 @@
+Warning: Using a password on the command line interface can be insecure.
+ERROR 1451 (23000) at line 15: Cannot delete or update a parent row: a foreign key constraint fails (`gmccall5assign2db`.`customer`, CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`agentID`) REFERENCES `agent` (`agentID`))
+--------------
+CREATE VIEW assignview AS SELECT firstName, lastName, description, purchase.quantity, cost, purchase.quantity * cost AS 'total' FROM customer, product, purchase WHERE purchase.productID = product.productID AND purchase.customerID = customer.customerID ORDER BY lastName
+--------------
+
+--------------
+SELECT * FROM assignview
+--------------
+
+firstName	lastName	description	quantity	cost	total
+Sideshow	Bob	Socks	5	2.00	10.00
+Sideshow	Bob	Elbow pads	5	14.25	71.25
+Sideshow	Bob	Knee Pads	5	12.15	60.75
+Sideshow	Bob	Helmet	5	29.00	145.00
+Fred	Flintstone	Elbow pads	2	14.25	28.50
+Fred	Flintstone	Knee Pads	2	12.15	24.30
+Peter	Griffens	Elbow pads	19	14.25	270.75
+Homer	Simpson	Socks	14	2.00	28.00
+Homer	Simpson	Elbow pads	10	14.25	142.50
+Homer	Simpson	Helmet	20	29.00	580.00
+--------------
+SELECT * FROM assignview WHERE total > 100
+--------------
+
+firstName	lastName	description	quantity	cost	total
+Sideshow	Bob	Helmet	5	29.00	145.00
+Peter	Griffens	Elbow pads	19	14.25	270.75
+Homer	Simpson	Elbow pads	10	14.25	142.50
+Homer	Simpson	Helmet	20	29.00	580.00
+--------------
+DELETE FROM product WHERE description = 'Clocks'
+--------------
+
+--------------
+SELECT * FROM product
+--------------
+
+productID	description	cost	quantity
+11	Bike	150.00	200
+12	Socks	2.00	100
+66	Elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75.00	89
+99	Helmet	29.00	30
+--------------
+DELETE FROM agent WHERE city = 'Springfield'
+--------------
+

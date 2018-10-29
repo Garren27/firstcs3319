@@ -5,6 +5,7 @@ SHOW DATABASES
 
 Database
 information_schema
+gmccall5assign2db
 junkdb
 mycompany
 myfirstdb
