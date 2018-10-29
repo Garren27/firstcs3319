@@ -1,0 +1,6 @@
+USE gmccall5assign2db
+
+SELECT * FROM product;
+SELECT * FROM agent;
+SELECT * FROM customer;
+SELECT * FROM purchase;

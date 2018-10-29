@@ -1,0 +1,18 @@
+USE gmccall5assign2db;
+
+-- Create the view that shows the first name, last name, description, quantity, cost and total cost of all the customers that have purchased anything
+CREATE VIEW assignview AS SELECT firstName, lastName, description, purchase.quantity, cost, purchase.quantity * cost AS 'total' FROM customer, product, purchase WHERE purchase.productID = product.productID AND purchase.customerID = customer.customerID ORDER BY lastName;
+SELECT * FROM assignview;
+
+-- Show where customers spent > 100 dollars
+SELECT * FROM assignview WHERE total > 100;
+
+-- Delete from product the product I made up by referencing its description and show updated table
+DELETE FROM product WHERE description = 'Clocks';
+SELECT * FROM product;
+
+-- Delete all agents from Springfield
+DELETE FROM agent WHERE city = 'Springfield';
+-- These rows where not deleted because the agent table has an attribute, agentID, that is a foreign key for the 
+-- customer table. Since every customer must deal with an agent in a 1-M relationship, MySQL did not allow the delete
+-- because then some customers would no longer have a foreign key. 

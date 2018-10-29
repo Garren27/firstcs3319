@@ -8,7 +8,7 @@ CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319';
 GRANT ALL PRIVILEGES ON gmccall5assign2db.* TO 'ta'@'localhost';
 FLUSH PRIVILEGES;
 SHOW TABLES;
-CREATE TABLE product (productID VARCHAR(2) NOT NULL, description VARCHAR(20), cost FLOAT, quantity INT, PRIMARY KEY (productID)); 
+CREATE TABLE product (productID VARCHAR(2) NOT NULL, description VARCHAR(20), cost DECIMAL(5,2), quantity INT, PRIMARY KEY (productID)); 
 CREATE TABLE agent (agentID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), commission FLOAT, PRIMARY KEY (agentID));
 
 CREATE TABLE customer (customerID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), phoneNum VARCHAR(8), agentID VARCHAR(2), PRIMARY KEY (customerID), FOREIGN KEY (agentID) REFERENCES agent(agentID));
