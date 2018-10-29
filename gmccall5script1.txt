@@ -1,5 +1,10 @@
+-- Show all current databases
 SHOW DATABASES;
+
+-- Delete gmccall5assign2db if it exists
 DROP DATABASE IF EXISTS gmccall5assign2db;
+
+-- Create database gmccall5assign2db and use it
 CREATE DATABASE gmccall5assign2db;
 USE gmccall5assign2db;
 GRANT USAGE ON *.* TO 'ta'@'localhost';
@@ -7,6 +12,8 @@ DROP USER 'ta'@'localhost';
 CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319';
 GRANT ALL PRIVILEGES ON gmccall5assign2db.* TO 'ta'@'localhost';
 FLUSH PRIVILEGES;
+
+-- Show tables and create four tables for product, agent, customer, purchase
 SHOW TABLES;
 CREATE TABLE product (productID VARCHAR(2) NOT NULL, description VARCHAR(20), cost DECIMAL(5,2), quantity INT, PRIMARY KEY (productID)); 
 CREATE TABLE agent (agentID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), commission FLOAT, PRIMARY KEY (agentID));
@@ -14,4 +21,5 @@ CREATE TABLE agent (agentID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName
 CREATE TABLE customer (customerID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), phoneNum VARCHAR(8), agentID VARCHAR(2), PRIMARY KEY (customerID), FOREIGN KEY (agentID) REFERENCES agent(agentID));
 CREATE TABLE purchase (customerID VARCHAR(2) NOT NULL, productID VARCHAR(2) NOT NULL, quantity INT, PRIMARY KEY (customerID, productID), FOREIGN KEY (customerID) REFERENCES customer(customerID), FOREIGN KEY (productID) REFERENCES  product(productID));
 
+-- Show tables were created successfully
 SHOW TABLES;

@@ -5,8 +5,6 @@ SHOW DATABASES
 
 Database
 information_schema
-gmccall5assign2db
-gmccall5db
 junkdb
 mycompany
 myfirstdb
@@ -46,7 +44,7 @@ SHOW TABLES
 --------------
 
 --------------
-CREATE TABLE product (productID VARCHAR(2) NOT NULL, description VARCHAR(20), cost FLOAT, quantity INT, PRIMARY KEY (productID))
+CREATE TABLE product (productID VARCHAR(2) NOT NULL, description VARCHAR(20), cost DECIMAL(5,2), quantity INT, PRIMARY KEY (productID))
 --------------
 
 --------------

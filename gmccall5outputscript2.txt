@@ -9,11 +9,11 @@ SELECT * FROM product
 --------------
 
 productID	description	cost	quantity
-11	Bike	150	200
-12	Socks	2	100
+11	Bike	150.00	200
+12	Socks	2.00	100
 78	Knee Pads	12.15	70
-88	Roller Blades	75	89
-99	Helmet	29	30
+88	Roller Blades	75.00	89
+99	Helmet	29.00	30
 --------------
 INSERT INTO product (productID, description, cost, quantity) VALUES (66, "Elbow pads", 14.25, 120)
 --------------
@@ -151,13 +151,13 @@ SELECT * FROM product
 --------------
 
 productID	description	cost	quantity
-11	Bike	150	200
-12	Socks	2	100
-55	Clocks	22.5	100
+11	Bike	150.00	200
+12	Socks	2.00	100
+55	Clocks	22.50	100
 66	Elbow pads	14.25	120
 78	Knee Pads	12.15	70
-88	Roller Blades	75	89
-99	Helmet	29	30
+88	Roller Blades	75.00	89
+99	Helmet	29.00	30
 --------------
 SELECT * FROM agent
 --------------
@@ -214,13 +214,13 @@ SELECT * FROM product
 --------------
 
 productID	description	cost	quantity
-11	Bike	150	200
-12	Socks	2	100
-55	Clocks	22.5	100
+11	Bike	150.00	200
+12	Socks	2.00	100
+55	Clocks	22.50	100
 66	Elbow pads	14.25	120
 78	Knee Pads	12.15	70
-88	Roller Blades	75	89
-99	Helmet	29	30
+88	Roller Blades	75.00	89
+99	Helmet	29.00	30
 --------------
 SELECT * FROM agent
 --------------
