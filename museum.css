@@ -1,0 +1,23 @@
+/*
+	Museum Styles
+*/
+
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 20px;
+	background-color: cornflowerblue;
+	color: white;
+}
+h1 {
+	font-size: 40px;
+}
+select {
+		font-family: 'Roboto Condensed', sans-serif;
+		background-color: orange;
+}
+table, th, td {
+	vertical-align: top;
+}
+img {
+	vertical-align: top;	
+}

@@ -3,69 +3,105 @@ Warning: Using a password on the command line interface can be insecure.
 SHOW DATABASES
 --------------
 
-Database
-information_schema
-gmccall5assign2db
-junkdb
-mycompany
-myfirstdb
-mysql
-performance_schema
-test1
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| flipped3           |
+| gmccall5assign2db  |
+| junkdb             |
+| mycompany          |
+| myfirstdb          |
+| mysql              |
+| performance_schema |
+| test1              |
++--------------------+
+9 rows in set (0.00 sec)
+
 --------------
 DROP DATABASE IF EXISTS gmccall5assign2db
 --------------
+
+Query OK, 5 rows affected (0.48 sec)
 
 --------------
 CREATE DATABASE gmccall5assign2db
 --------------
 
+Query OK, 1 row affected (0.00 sec)
+
 --------------
 GRANT USAGE ON *.* TO 'ta'@'localhost'
 --------------
+
+Query OK, 0 rows affected (0.00 sec)
 
 --------------
 DROP USER 'ta'@'localhost'
 --------------
 
+Query OK, 0 rows affected (0.00 sec)
+
 --------------
 CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319'
 --------------
+
+Query OK, 0 rows affected (0.01 sec)
 
 --------------
 GRANT ALL PRIVILEGES ON gmccall5assign2db.* TO 'ta'@'localhost'
 --------------
 
+Query OK, 0 rows affected (0.00 sec)
+
 --------------
 FLUSH PRIVILEGES
 --------------
 
+Query OK, 0 rows affected (0.00 sec)
+
 --------------
 SHOW TABLES
 --------------
+
+Empty set (0.00 sec)
 
 --------------
 CREATE TABLE product (productID VARCHAR(2) NOT NULL, description VARCHAR(20), cost DECIMAL(5,2), quantity INT, PRIMARY KEY (productID))
 --------------
 
+Query OK, 0 rows affected (0.04 sec)
+
 --------------
 CREATE TABLE agent (agentID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), commission FLOAT, PRIMARY KEY (agentID))
 --------------
+
+Query OK, 0 rows affected (0.63 sec)
 
 --------------
 CREATE TABLE customer (customerID VARCHAR(2) NOT NULL, firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), phoneNum VARCHAR(8), agentID VARCHAR(2), PRIMARY KEY (customerID), FOREIGN KEY (agentID) REFERENCES agent(agentID))
 --------------
 
+Query OK, 0 rows affected (0.28 sec)
+
 --------------
 CREATE TABLE purchase (customerID VARCHAR(2) NOT NULL, productID VARCHAR(2) NOT NULL, quantity INT, PRIMARY KEY (customerID, productID), FOREIGN KEY (customerID) REFERENCES customer(customerID), FOREIGN KEY (productID) REFERENCES  product(productID))
 --------------
+
+Query OK, 0 rows affected (0.07 sec)
 
 --------------
 SHOW TABLES
 --------------
 
-Tables_in_gmccall5assign2db
-agent
-customer
-product
-purchase
++-----------------------------+
+| Tables_in_gmccall5assign2db |
++-----------------------------+
+| agent                       |
+| customer                    |
+| product                     |
+| purchase                    |
++-----------------------------+
+4 rows in set (0.00 sec)
+
+Bye
